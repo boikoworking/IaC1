@@ -5,17 +5,17 @@ New-AzResourceGroup `
   -Location "East US"
 New-AzStorageAccount `
   -ResourceGroupName ExampleGroup `
-  -Name depp090909 `
+  -Name depp00000 `
   -Type Standard_LRS `
   -Location "East US"
 Set-AzCurrentStorageAccount `
   -ResourceGroupName ExampleGroup `
-  -Name depp090909
+  -Name depp00000
 New-AzStorageContainer `
   -Name template `
   -Permission Off
   Set-AzStorageBlobContent `
-  -Container templates `
+  -Container template `
   -File .\main.json
   Set-AzStorageBlobContent `
   -Container template `
