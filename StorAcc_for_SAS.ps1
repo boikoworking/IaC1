@@ -2,12 +2,12 @@ Connect-AzAccount -AccountId "fopskt@gmail.com"
 Select-AzSubscription "23f5f8a4-4a06-4dce-92e7-6b980f7ad0b8"
 New-AzResourceGroup `
   -Name ExampleGroup `
-  -Location "Central US"
+  -Location "East US"
 New-AzStorageAccount `
   -ResourceGroupName ExampleGroup `
   -Name depp090909 `
   -Type Standard_LRS `
-  -Location "Central US"
+  -Location "East US"
 Set-AzCurrentStorageAccount `
   -ResourceGroupName ExampleGroup `
   -Name depp090909
