@@ -36,12 +36,20 @@
     },
     "subnet2Name": {
       "type": "string"
+    },
+    "containerSasToken": {
+      "type": "string",
+      "defaultValue": ""
     }
   },
   "variables": {
     "uniqueStorageName": "[concat(parameters('storagePrefix'), uniqueString(resourceGroup().id))]",
-    "uniqueVnetname": "[concat(resourceGroup().name,parameters('vnetName'),uniqueString(resourceGroup().id))]"
+    "uniqueVnetname": "[concat(resourceGroup().name,parameters('vnetName'),uniqueString(resourceGroup().id))]",
+    "st_acc_link": "[concat(uri(deployment().properties.templateLink.uri,'storage_account.json'),parameters('containerSasToken'))]",
+    "parameters_link": "[concat(uri(deployment().properties.templateLink.uri,'parametrs.json'),parameters('containerSasToken'))]",
+    "vn_link": "[concat(uri(deployment().properties.templateLink.uri,'virtual_network.json'),parameters('containerSasToken'))]"
   },
+  
 
     "resources": [
           {
@@ -51,11 +59,11 @@
         "properties": {
           "mode": "Incremental",
           "templateLink": {
-            "uri":"https://raw.githubusercontent.com/boikoworking/IaC1/main/linked/storage_account.json",
+            "uri":"[variables('st_acc_link')]",
             "contentVersion":"1.0.0.0"
           },
           "parametersLink": {
-               "uri": "https://raw.githubusercontent.com/boikoworking/IaC1/main/parametrs.json" 
+               "uri": "[variables('parameters_link')]" 
               }
             }
           },
@@ -66,11 +74,11 @@
         "properties": {
           "mode": "Incremental",
           "templateLink": {
-            "uri":"https://raw.githubusercontent.com/boikoworking/IaC1/main/linked/virtual_network.json",
+            "uri":"[variables('vn_link')]",
             "contentVersion":"1.0.0.0"
               },
             "parametersLink": {
-               "uri": "https://raw.githubusercontent.com/boikoworking/IaC1/main/parametrs.json" 
+               "uri": "[variables('parameters_link')]" 
               }
             }
           }

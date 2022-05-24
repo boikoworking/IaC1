@@ -2,6 +2,9 @@
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
+    "containerSasToken": {
+        "value": "?sv=2021-04-10&se=2022-05-23T17%3A06%3A25Z&sr=c&sp=r&sig=%2FLj5hY2c0bla6%2BuLAPR%2BMynxC3rGZL%2B5YAlEpDodPac%3D" 
+      },
       "vnetName": {
           "value": "VVneet"
       },
